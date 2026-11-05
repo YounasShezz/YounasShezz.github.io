@@ -81,8 +81,16 @@ footer{margin-top:28px;text-align:center;color:#5c5c66;font-size:12px;animation:
 </head>
 <body>
 <div class="orb a"></div><div class="orb b"></div>
-
-<main class="wrap">
+  
+<table background="assets/background.webp">
+  <tr>
+    <td align="center" height="200" width="600">
+      <!-- هنا يمكنك وضع الأفاتار الخاص بك ليظهر فوق الخلفية -->
+      <img src="ddd.webp" alt="Avatar" width="80" height="80" style="border-radius: 50%;">
+      <h3>PRIME SERVICES</h3>
+    </td>
+  </tr>
+  <main class="wrap">
   <div class="avatar">
      <img src="ddd.webp" alt="Avatar" width="80" height="80" style="border-radius: 50%; object-fit: cover;">
     
@@ -118,6 +126,8 @@ footer{margin-top:28px;text-align:center;color:#5c5c66;font-size:12px;animation:
 
   <footer>© <span id="y"></span> — كل الحقوق محفوظة</footer>
 </main>
+</table>
+
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
