@@ -10,8 +10,8 @@
 <meta property="og:image" content="https://younasshezz.github.io/Q.webp">
 <style>
 :root{
-  --bg:#0a0a12; --card:rgba(18,18,28,.62); --line:rgba(255,255,255,.14);
-  --txt:#f4f4f6; --muted:#b0b0be;
+  --bg:#0a0a12; --card:rgba(12,12,20,.72); --line:rgba(255,255,255,.2);
+  --txt:#f4f4f6; --muted:#d2d2de;
   --tt:#25F4EE; --ig1:#f09433; --ig2:#dc2743;
   --fb:#1877F2; --tel:#34C759;
 }
@@ -27,34 +27,45 @@ body{
   overflow-x:hidden;
 }
 
+/* ---------- الخلفية: ظاهرة وواضحة ---------- */
 .bg{
   position:fixed;inset:0;
   background-image:url("Q.webp");
   background-color:#0a0a12;
-  background-size:cover;background-position:center;background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter:blur(1.5px) saturate(1.12) brightness(1.04);
+  transform:scale(1.05);
 }
+/* تعتيم خفيف جدًا: يكاد لا يُرى في الأعلى، يزداد فقط عند التذييل */
 .bg::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(8,8,14,.7) 0%,rgba(8,8,14,.82) 45%,rgba(8,8,14,.93) 100%);
+  background:linear-gradient(180deg,
+    rgba(8,8,14,.06) 0%,
+    rgba(8,8,14,.18) 50%,
+    rgba(8,8,14,.62) 100%);
 }
-.orb{position:fixed;border-radius:50%;filter:blur(95px);pointer-events:none}
-.orb.a{width:330px;height:330px;background:var(--ig2);opacity:.34;top:-110px;right:-100px}
-.orb.b{width:300px;height:300px;background:var(--tt);opacity:.2;bottom:-120px;left:-100px}
+
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;mix-blend-mode:screen}
+.orb.a{width:320px;height:320px;background:var(--ig2);opacity:.22;top:-120px;right:-110px}
+.orb.b{width:300px;height:300px;background:var(--tt);opacity:.14;bottom:-130px;left:-110px}
 
 .wrap{position:relative;z-index:1;width:min(100%,420px);text-align:center}
 
 .avatar{
   width:96px;height:96px;border-radius:50%;margin:0 auto 18px;display:block;
   object-fit:cover;background:linear-gradient(135deg,var(--ig2),var(--ig1));
-  box-shadow:0 0 0 4px rgba(255,255,255,.1),0 16px 44px -10px rgba(0,0,0,.7);
+  box-shadow:0 0 0 4px rgba(255,255,255,.22),0 16px 44px -10px rgba(0,0,0,.75);
 }
 h1{
   font-size:23px;margin:0 0 8px;letter-spacing:-.2px;
-  text-shadow:0 2px 14px rgba(0,0,0,.85);
+  text-shadow:0 1px 2px #000,0 2px 8px rgba(0,0,0,.95),0 4px 26px rgba(0,0,0,.8);
 }
 .bio{
-  margin:0 auto;color:#cfcfdb;font-size:14.5px;line-height:1.6;
-  max-width:300px;text-shadow:0 2px 12px rgba(0,0,0,.9);
+  margin:0 auto;color:#f0f0f5;font-size:14.5px;line-height:1.6;
+  max-width:300px;
+  text-shadow:0 1px 2px #000,0 2px 10px rgba(0,0,0,.95);
 }
 
 .links{display:grid;gap:12px;margin-top:30px}
@@ -66,36 +77,37 @@ h1{
   color:var(--txt);text-decoration:none;
   text-align:start;
   opacity:1;
+  box-shadow:0 6px 22px -8px rgba(0,0,0,.6);
   transition:transform .18s,background .18s,border-color .18s,box-shadow .18s;
 }
 @supports (backdrop-filter:blur(1px)){
-  .link{background:rgba(255,255,255,.09);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+  .link{background:rgba(14,14,22,.5);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2)}
 }
-.link:hover{transform:translateY(-3px);background:rgba(255,255,255,.16)}
+.link:hover{transform:translateY(-3px);background:rgba(255,255,255,.22)}
 .link:active{transform:scale(.98)}
 .link:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.link.tt:hover{border-color:rgba(37,244,238,.5);box-shadow:0 12px 32px -10px rgba(37,244,238,.5)}
-.link.ig:hover{border-color:rgba(220,39,67,.5);box-shadow:0 12px 32px -10px rgba(220,39,67,.55)}
-.link.fb:hover{border-color:rgba(24,119,242,.5);box-shadow:0 12px 32px -10px rgba(24,119,242,.55)}
-.link.tel:hover{border-color:rgba(52,199,89,.5);box-shadow:0 12px 32px -10px rgba(52,199,89,.5)}
+.link.tt:hover{border-color:rgba(37,244,238,.6);box-shadow:0 12px 32px -10px rgba(37,244,238,.55)}
+.link.ig:hover{border-color:rgba(220,39,67,.6);box-shadow:0 12px 32px -10px rgba(220,39,67,.6)}
+.link.fb:hover{border-color:rgba(24,119,242,.6);box-shadow:0 12px 32px -10px rgba(24,119,242,.6)}
+.link.tel:hover{border-color:rgba(52,199,89,.6);box-shadow:0 12px 32px -10px rgba(52,199,89,.55)}
 
 .ic{width:38px;height:38px;flex:0 0 38px;border-radius:11px;display:grid;place-items:center}
 .ic svg{width:19px;height:19px;display:block}
-.link.tt .ic{background:rgba(37,244,238,.16);color:var(--tt)}
-.link.ig .ic{background:rgba(220,39,67,.18);color:#ff5c8a}
-.link.fb .ic{background:rgba(24,119,242,.18);color:#5aa3ff}
-.link.tel .ic{background:rgba(52,199,89,.18);color:var(--tel)}
+.link.tt .ic{background:rgba(37,244,238,.2);color:var(--tt)}
+.link.ig .ic{background:rgba(220,39,67,.24);color:#ff7ba0}
+.link.fb .ic{background:rgba(24,119,242,.24);color:#7ab6ff}
+.link.tel .ic{background:rgba(52,199,89,.24);color:#5ee07f}
 
 .meta{display:grid;gap:2px;min-width:0}
-.meta b{font-size:15px;font-weight:600}
+.meta b{font-size:15px;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .meta span{font-size:12.5px;color:var(--muted);direction:ltr;text-align:start;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.arrow{margin-inline-start:auto;opacity:.45;font-size:15px;transition:.18s}
-.link:hover .arrow{opacity:.9;transform:translate(-3px,-3px)}
+.arrow{margin-inline-start:auto;opacity:.55;font-size:15px;transition:.18s}
+.link:hover .arrow{opacity:1;transform:translate(-3px,-3px)}
 
-footer{margin-top:28px;color:#9a9aa8;font-size:12px}
+footer{margin-top:28px;color:#e2e2ea;font-size:12px;
+  text-shadow:0 1px 3px #000,0 2px 8px rgba(0,0,0,.9)}
 
-/* التحسينات البصرية فقط — تعمل أو تُتجاهل */
 @media (prefers-reduced-motion:no-preference){
   .avatar{animation:pop .6s cubic-bezier(.2,.8,.3,1) both}
   h1{animation:rise .5s .05s both}
