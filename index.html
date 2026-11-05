@@ -2,55 +2,81 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08080a">
 <title>PRIME SERVICE</title>
 <meta property="og:title" content="PRIME - SERVICE">
 <meta property="og:description" content="كل روابطي في مكان واحد">
 <style>
 :root{
-  --bg:#3e3ec2; --card:rgba(255,255,255,.055); --line:rgba(255,255,255,.1);
-  --txt:#f4f4f6; --muted:#8b8b96;
+  --bg:#0a0a12; --card:rgba(255,255,255,.07); --line:rgba(255,255,255,.12);
+  --txt:#f4f4f6; --muted:#a8a8b6;
   --tt:#25F4EE; --ig1:#f09433; --ig2:#dc2743; --ig3:#bc1888;
   --fb:#1877F2; --tel:#34C759;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
 body{
-  margin:0;min-height:100vh;padding:52px 20px 44px;
-  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-  background:var(--bg);color:var(--txt);
-  display:flex;justify-content:center;overflow-x:hidden;
+  margin:0;min-height:100vh;min-height:100dvh;
+  padding:calc(44px + env(safe-area-inset-top)) 20px calc(36px + env(safe-area-inset-bottom));
+  font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+  background:radial-gradient(circle at 80% 0%,#2a1a4d,var(--bg) 60%);
+  color:var(--txt);
+  display:flex;justify-content:center;align-items:flex-start;
+  overflow-x:hidden;
 }
-.orb{position:fixed;border-radius:50%;filter:blur(95px);pointer-events:none;z-index:0}
-.orb.a{width:330px;height:330px;background:var(--ig2);opacity:.45;top:-110px;right:-100px;animation:drift 15s ease-in-out infinite}
-.orb.b{width:300px;height:300px;background:var(--tt);opacity:.28;bottom:-120px;left:-100px;animation:drift 19s ease-in-out infinite reverse}
+
+/* ---------- الخلفية ---------- */
+.bg{
+  position:fixed;inset:0;z-index:-2;
+  background-image:url("Q.webp");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,8,14,.62) 0%,rgba(8,8,14,.78) 45%,rgba(8,8,14,.9) 100%);
+}
+.orb{position:fixed;border-radius:50%;filter:blur(95px);pointer-events:none;z-index:-1}
+.orb.a{width:330px;height:330px;background:var(--ig2);opacity:.38;top:-110px;right:-100px;animation:drift 15s ease-in-out infinite}
+.orb.b{width:300px;height:300px;background:var(--tt);opacity:.22;bottom:-120px;left:-100px;animation:drift 19s ease-in-out infinite reverse}
 @keyframes drift{50%{transform:translate3d(0,50px,0) scale(1.18)}}
 
-.wrap{position:relative;z-index:1;width:min(100%,420px)}
+/* ---------- الحاوية ---------- */
+.wrap{position:relative;z-index:1;width:min(100%,420px);text-align:center}
+
 .avatar{
-  width:96px;height:96px;border-radius:50%;margin:0 auto 18px;
-  display:grid;place-items:center;font-size:38px;font-weight:800;
-  background:linear-gradient(135deg,var(--ig2),var(--ig1));
-  box-shadow:0 0 0 4px rgba(255,255,255,.06),0 16px 44px -10px rgba(220,39,67,.55);
+  width:96px;height:96px;border-radius:50%;margin:0 auto 18px;display:block;
+  object-fit:cover;background:linear-gradient(135deg,var(--ig2),var(--ig1));
+  box-shadow:0 0 0 4px rgba(255,255,255,.1),0 16px 44px -10px rgba(0,0,0,.7);
   animation:pop .6s cubic-bezier(.2,.8,.3,1) both;
 }
 @keyframes pop{from{opacity:0;transform:scale(.8)}}
-h1{font-size:23px;margin:0 0 8px;text-align:center;letter-spacing:-.2px;
-   animation:rise .5s .05s both}
-.bio{margin:0 auto;text-align:center;color:var(--muted);font-size:14.5px;line-height:1.6;
-     max-width:300px;animation:rise .5s .1s both}
+
+h1{
+  font-size:23px;margin:0 0 8px;letter-spacing:-.2px;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);
+  animation:rise .5s .05s both;
+}
+.bio{
+  margin:0 auto;color:#c9c9d6;font-size:14.5px;line-height:1.6;
+  max-width:300px;text-shadow:0 2px 12px rgba(0,0,0,.9);
+  animation:rise .5s .1s both;
+}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}}
 
+/* ---------- الروابط ---------- */
 .links{display:grid;gap:12px;margin-top:30px}
 .link{
   display:flex;align-items:center;gap:14px;padding:14px 18px;
   border-radius:16px;background:var(--card);border:1px solid var(--line);
-  color:var(--txt);text-decoration:none;backdrop-filter:blur(14px);
+  color:var(--txt);text-decoration:none;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   transition:transform .18s,background .18s,border-color .18s,box-shadow .18s;
   opacity:0;animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards;
   animation-delay:calc(var(--i)*70ms + 150ms);
+  text-align:start;
 }
-.link:hover{transform:translateY(-3px);background:rgba(255,255,255,.09)}
+.link:hover{transform:translateY(-3px);background:rgba(255,255,255,.13)}
 .link:active{transform:scale(.98)}
 .link:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .link.tt:hover{border-color:rgba(37,244,238,.45);box-shadow:0 12px 32px -10px rgba(37,244,238,.5)}
@@ -68,11 +94,11 @@ h1{font-size:23px;margin:0 0 8px;text-align:center;letter-spacing:-.2px;
 .meta{display:grid;gap:2px;min-width:0}
 .meta b{font-size:15px;font-weight:600}
 .meta span{font-size:12.5px;color:var(--muted);direction:ltr;text-align:start;
-           overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.arrow{margin-inline-start:auto;opacity:.35;font-size:15px;transition:.18s}
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arrow{margin-inline-start:auto;opacity:.4;font-size:15px;transition:.18s}
 .link:hover .arrow{opacity:.9;transform:translate(-3px,-3px)}
 
-footer{margin-top:28px;text-align:center;color:#5c5c66;font-size:12px;animation:rise .5s .45s both}
+footer{margin-top:28px;color:#8e8e9c;font-size:12px;animation:rise .5s .45s both}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;opacity:1!important;transition:none!important}
@@ -80,38 +106,30 @@ footer{margin-top:28px;text-align:center;color:#5c5c66;font-size:12px;animation:
 </style>
 </head>
 <body>
-<div class="orb a"></div><div class="orb b"></div>
-  
-<table background="Q.webp">
-  <tr>
-    <td align="center" height="200" width="600">
-      <!-- هنا يمكنك وضع الأفاتار الخاص بك ليظهر فوق الخلفية -->
-      <img src="ddd.webp" alt="Avatar" width="80" height="80" style="border-radius: 50%;">
-      <h3>PRIME SERVICES</h3>
-      <p class="bio">تابعني على منصاتي، أو راسلني مباشرة.</p>
-    </td>
-  </tr>
-  <main class="wrap">
+<div class="bg" aria-hidden="true"></div>
+<div class="orb a" aria-hidden="true"></div><div class="orb b" aria-hidden="true"></div>
 
-
-  
+<main class="wrap">
+  <img class="avatar" src="ddd.webp" alt="PRIME SERVICES" width="96" height="96">
+  <h1>PRIME SERVICES</h1>
+  <p class="bio">تابعني على منصاتي، أو راسلني مباشرة.</p>
 
   <nav class="links">
     <a class="link tt" style="--i:0" href="https://www.tiktok.com/@h.c.impression" target="_blank" rel="noopener">
       <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A5.4 5.4 0 0 1 15.3 3h-3.1v12.6a2.9 2.9 0 1 1-2.1-2.8V9.7a6 6 0 1 0 5.2 5.9V8.7a8.4 8.4 0 0 0 4.5 1.3V6.9a5.3 5.3 0 0 1-3.2-1.1z"/></svg></span>
-      <span class="meta"><b>تيك توك</b><span>@USERNAME</span></span>
+      <span class="meta"><b>تيك توك</b><span>@h.c.impression</span></span>
       <span class="arrow">↗</span>
     </a>
 
     <a class="link ig" style="--i:1" href="https://www.instagram.com/h.c_impression" target="_blank" rel="noopener">
       <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></span>
-      <span class="meta"><b>إنستغرام</b><span>@USERNAME</span></span>
+      <span class="meta"><b>إنستغرام</b><span>@h.c_impression</span></span>
       <span class="arrow">↗</span>
     </a>
 
     <a class="link fb" style="--i:2" href="https://www.facebook.com/profile.php?id=61572529697228" target="_blank" rel="noopener">
       <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 9h2.4V6.2h-2.4c-2.2 0-4 1.8-4 4v1.4H7.8V14h2.4v7h2.9v-7h2.5l.4-2.4h-2.9V10c0-.6.5-1 1.1-1z"/></svg></span>
-      <span class="meta"><b>فيسبوك</b><span>@USERNAME</span></span>
+      <span class="meta"><b>فيسبوك</b><span>PRIME SERVICES</span></span>
       <span class="arrow">↗</span>
     </a>
 
@@ -124,8 +142,6 @@ footer{margin-top:28px;text-align:center;color:#5c5c66;font-size:12px;animation:
 
   <footer>© <span id="y"></span> — كل الحقوق محفوظة</footer>
 </main>
-</table>
-
 
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
